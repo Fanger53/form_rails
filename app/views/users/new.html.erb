@@ -1,12 +1,21 @@
 <h1> New Form</h1>
 
- <% <form action="users_path" method="post" accept-charset="UTF-8">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="user[username]">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="user[email]">
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="user[password]">
-    <input type="submit" value="Submit">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
- <% </form>  %>
+<%= form_for @user, url:'/users' do |f| %>
+  <ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <div class='form-group'>
+    Username <%= f.text_field :username, placeholder: "Put your name here", class:"placeholder"  %>
+  </div>
+  
+  <div class='form-group'>
+    Email <%= f.email_field :email, placeholder: "example@example.com", class:"placeholder"  %>
+  </div>
+  <div class='form-group'>
+    Password <%= f.password_field :password, placeholder: "your secret pass", class:"placeholder"  %>
+  </div>
+  
+  <%= f.submit :class => 'submit-btn' %>
+<% end %>
