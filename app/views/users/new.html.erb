@@ -21,21 +21,21 @@
   <%# <%= submit_tag("Submit") %>
 <%# <% end %>
 
-<%= form_for(@user, html: { class:"w-50"}, url:'/users') do |f| %>
+<%= form_for(@user, url:'/users') do |f| %>
   <ul>
   <% @user.errors.full_messages.each do |error| %>
     <li><%= error %></li>
   <% end %>
   </ul>
   <div class='form-group'>
-    Username <Br /> <%= f.text_field :username, placeholder: "username here", class:"placeholder form-control"  %>
+    Username <Br /> <%= f.text_field :username, placeholder: "username here", class:"placeholder "  %>
   </div>
   
   <div class='form-group'>
-    Email <Br />  <%= f.email_field :email, placeholder: "example@example.com", class:"placeholder form-control"  %>
+    Email <Br />  <%= f.email_field :email, placeholder: "example@example.com", class:"placeholder "  %>
   </div>
   <div class='form-group'>
-    Password <Br />  <%= f.password_field :password, placeholder: "password", class:"placeholder form-control"  %>
+    Password <Br />  <%= f.password_field :password, placeholder: "password", class:"placeholder "  %>
   </div>
   <Br /> 
   <%= f.submit :class => 'submit-btn' %>
