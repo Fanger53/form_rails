@@ -42,7 +42,7 @@ m = Module.new do
     gemfile = ENV['BUNDLE_GEMFILE']
     return gemfile if gemfile && !gemfile.empty?
 
-    File.expand_path('../../Gemfile', __FILE__)
+    File.expand_path('../Gemfile', __dir__)
   end
 
   def lockfile
@@ -115,3 +115,7 @@ end
 m.load_bundler!
 
 load Gem.bin_path('bundler', 'bundle') if m.invoked_as_script?
+
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Layout/LineLength
