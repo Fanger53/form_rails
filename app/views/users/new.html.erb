@@ -1,0 +1,42 @@
+<h1> New User</h1>
+
+<%# <form action='/users' method='post' accept-charset="UTF-8">
+<label for='username'>Username</label>
+<input type='text' id='username' name='user[username]'>
+<label for='email'>Email</label>
+<input type='email' id='email' name='user[email]'>
+<label for='password'>Password</label>
+<input type='password' id='password' name='user[password]'>
+<input type='submit' value='Submit'>
+<%# <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+
+<%# 
+<%= form_tag("/users", method: "post") do %>
+  <%# <%= label_tag(:username, "Username:") %>
+  <%# <%= text_field_tag(:username) %>
+  <%# <%= label_tag(:email, "Email:") %> 
+  <%# <%= email_field_tag(:email) %>
+  <%# <%= label_tag(:password, "Password:") %>
+  <%# <%= password_field_tag(:password) %>
+  <%# <%= submit_tag("Submit") %>
+<%# <% end %>
+
+<%= form_for(@user, url:'/users') do |f| %>
+  <ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <div class='form-group'>
+    Username <Br /> <%= f.text_field :username, placeholder: "username here", class:"placeholder "  %>
+  </div>
+  
+  <div class='form-group'>
+    Email <Br />  <%= f.email_field :email, placeholder: "example@example.com", class:"placeholder "  %>
+  </div>
+  <div class='form-group'>
+    Password <Br />  <%= f.password_field :password, placeholder: "password", class:"placeholder "  %>
+  </div>
+  <Br /> 
+  <%= f.submit :class => 'submit-btn' %>
+<% end %>
